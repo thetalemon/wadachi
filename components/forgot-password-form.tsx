@@ -50,7 +50,9 @@ export function ForgotPasswordForm({
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">メールを確認してください</CardTitle>
-            <CardDescription>パスワード再設定の手順を送信しました</CardDescription>
+            <CardDescription>
+              パスワード再設定の手順を送信しました
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
@@ -87,7 +89,10 @@ export function ForgotPasswordForm({
               </div>
               <div className="mt-4 text-center text-sm">
                 既にアカウントをお持ちですか？{" "}
-                <Link href="/auth/login" className="underline underline-offset-4">
+                <Link
+                  href="/auth/login"
+                  className="underline underline-offset-4"
+                >
                   ログイン
                 </Link>
               </div>

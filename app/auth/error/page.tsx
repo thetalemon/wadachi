@@ -11,9 +11,13 @@ async function ErrorContent({
   return (
     <>
       {params?.error ? (
-        <p className="text-sm text-muted-foreground">エラーコード: {params.error}</p>
+        <p className="text-sm text-muted-foreground">
+          エラーコード: {params.error}
+        </p>
       ) : (
-        <p className="text-sm text-muted-foreground">不明なエラーが発生しました。</p>
+        <p className="text-sm text-muted-foreground">
+          不明なエラーが発生しました。
+        </p>
       )}
     </>
   );
@@ -30,7 +34,9 @@ export default function Page({
         <div className="flex flex-col gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">申し訳ありません。問題が発生しました。</CardTitle>
+              <CardTitle className="text-2xl">
+                申し訳ありません。問題が発生しました。
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <Suspense>

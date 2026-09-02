@@ -47,7 +47,9 @@ export function UpdatePasswordForm({
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">パスワードをリセット</CardTitle>
-          <CardDescription>新しいパスワードを入力してください。</CardDescription>
+          <CardDescription>
+            新しいパスワードを入力してください。
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleForgotPassword}>

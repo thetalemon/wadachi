@@ -55,11 +55,21 @@ export function FetchDataSteps() {
       <TutorialStep title="テーブルを作成してデータを挿入する">
         <p>
           Supabase プロジェクトの
-          <a href="https://supabase.com/dashboard/project/_/editor" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
+          <a
+            href="https://supabase.com/dashboard/project/_/editor"
+            className="font-bold hover:underline text-foreground/80"
+            target="_blank"
+            rel="noreferrer"
+          >
             Table Editor
           </a>
           でテーブルを作成し、例となるデータを挿入してください。サンプルが必要な場合は、以下を
-          <a href="https://supabase.com/dashboard/project/_/sql/new" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
+          <a
+            href="https://supabase.com/dashboard/project/_/sql/new"
+            className="font-bold hover:underline text-foreground/80"
+            target="_blank"
+            rel="noreferrer"
+          >
             SQL Editor
           </a>
           に貼り付けて実行できます。
@@ -69,12 +79,24 @@ export function FetchDataSteps() {
 
       <TutorialStep title="Row Level Security (RLS) を有効化">
         <p>
-          Supabase ではデフォルトで Row Level Security (RLS) が有効です。<code>notes</code> テーブルからデータを取得するにはポリシーを追加する必要があります。これは
-          <a href="https://supabase.com/dashboard/project/_/editor" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
+          Supabase ではデフォルトで Row Level Security (RLS) が有効です。
+          <code>notes</code>{" "}
+          テーブルからデータを取得するにはポリシーを追加する必要があります。これは
+          <a
+            href="https://supabase.com/dashboard/project/_/editor"
+            className="font-bold hover:underline text-foreground/80"
+            target="_blank"
+            rel="noreferrer"
+          >
             Table Editor
           </a>
           か
-          <a href="https://supabase.com/dashboard/project/_/sql/new" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
+          <a
+            href="https://supabase.com/dashboard/project/_/sql/new"
+            className="font-bold hover:underline text-foreground/80"
+            target="_blank"
+            rel="noreferrer"
+          >
             SQL Editor
           </a>
           で実行できます。
@@ -97,7 +119,10 @@ export function FetchDataSteps() {
 
       <TutorialStep title="Next.js から Supabase のデータを取得する">
         <p>
-          非同期のサーバーコンポーネントから Supabase クライアントを作成してデータを取得するには、<code>/app/notes/page.tsx</code> を作成して以下のコードを追加してください。
+          非同期のサーバーコンポーネントから Supabase
+          クライアントを作成してデータを取得するには、
+          <code>/app/notes/page.tsx</code>{" "}
+          を作成して以下のコードを追加してください。
         </p>
         <CodeBlock code={server} />
         <p>Alternatively, you can use a Client Component.</p>
@@ -106,7 +131,14 @@ export function FetchDataSteps() {
 
       <TutorialStep title="Supabase UI ライブラリを試す">
         <p>
-          <a href="https://supabase.com/ui" className="font-bold hover:underline text-foreground/80">Supabase UI library</a> を試して、ブロックをインストールしてみましょう。例えば Realtime Chat ブロックは次のコマンドで追加できます。
+          <a
+            href="https://supabase.com/ui"
+            className="font-bold hover:underline text-foreground/80"
+          >
+            Supabase UI library
+          </a>{" "}
+          を試して、ブロックをインストールしてみましょう。例えば Realtime Chat
+          ブロックは次のコマンドで追加できます。
         </p>
         <CodeBlock
           code={

@@ -52,7 +52,9 @@ export function LoginForm({
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">ログイン</CardTitle>
-          <CardDescription>以下にメールアドレスを入力してログインしてください</CardDescription>
+          <CardDescription>
+            以下にメールアドレスを入力してログインしてください
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
@@ -91,8 +93,14 @@ export function LoginForm({
                 {isLoading ? "ログイン中..." : "ログイン"}
               </Button>
             </div>
-            <div className="mt-4 text-center text-sm">アカウントをお持ちでないですか？{" "}
-              <Link href="/auth/sign-up" className="underline underline-offset-4">サインアップ</Link>
+            <div className="mt-4 text-center text-sm">
+              アカウントをお持ちでないですか？{" "}
+              <Link
+                href="/auth/sign-up"
+                className="underline underline-offset-4"
+              >
+                サインアップ
+              </Link>
             </div>
           </form>
         </CardContent>

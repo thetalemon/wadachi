@@ -5,7 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 export function SignUpUserSteps() {
   return (
     <ol className="flex flex-col gap-6">
-      {process.env.VERCEL_ENV === "preview" || process.env.VERCEL_ENV === "production" ? (
+      {process.env.VERCEL_ENV === "preview" ||
+      process.env.VERCEL_ENV === "production" ? (
         <TutorialStep title="リダイレクト URL の設定">
           <p>このアプリは Vercel 上でホストされているようです。</p>
           <p className="mt-4">
@@ -21,7 +22,12 @@ export function SignUpUserSteps() {
           </p>
           <p className="mt-4">
             Supabase のリダイレクト URL を、Vercel のデプロイ先に合わせて
-            <Link className="text-primary hover:text-foreground" href={"https://supabase.com/dashboard/project/_/auth/url-configuration"}>
+            <Link
+              className="text-primary hover:text-foreground"
+              href={
+                "https://supabase.com/dashboard/project/_/auth/url-configuration"
+              }
+            >
               更新する必要があります
             </Link>
             。
@@ -48,20 +54,31 @@ export function SignUpUserSteps() {
                 )}-*-[vercel-team-url].vercel.app/**`}
               </span>{" "}
               （Vercel のチーム URL は
-              <Link className="text-primary hover:text-foreground" href="https://vercel.com/docs/accounts/create-a-team#find-your-team-id" target="_blank">
+              <Link
+                className="text-primary hover:text-foreground"
+                href="https://vercel.com/docs/accounts/create-a-team#find-your-team-id"
+                target="_blank"
+              >
                 Vercel Team settings
               </Link>
               で確認できます）
             </li>
           </ul>
-          <Link href="https://supabase.com/docs/guides/auth/redirect-urls#vercel-preview-urls" target="_blank" className="text-primary/50 hover:text-primary flex items-center text-sm gap-1 mt-4">
+          <Link
+            href="https://supabase.com/docs/guides/auth/redirect-urls#vercel-preview-urls"
+            target="_blank"
+            className="text-primary/50 hover:text-primary flex items-center text-sm gap-1 mt-4"
+          >
             リダイレクト URL のドキュメント <ArrowUpRight size={14} />
           </Link>
         </TutorialStep>
       ) : null}
       <TutorialStep title="最初のユーザーをサインアップする">
         <p>
-          <Link href="auth/sign-up" className="font-bold hover:underline text-foreground/80">
+          <Link
+            href="auth/sign-up"
+            className="font-bold hover:underline text-foreground/80"
+          >
             サインアップ
           </Link>
           ページに移動して、最初のユーザーを作成してください。今はあなた自身のアカウントでも問題ありません。

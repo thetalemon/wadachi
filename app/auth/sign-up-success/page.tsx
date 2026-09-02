@@ -13,8 +13,12 @@ export default function Page() {
         <div className="flex flex-col gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">サインアップありがとうございます！</CardTitle>
-              <CardDescription>確認のためメールをご確認ください</CardDescription>
+              <CardTitle className="text-2xl">
+                サインアップありがとうございます！
+              </CardTitle>
+              <CardDescription>
+                確認のためメールをご確認ください
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">

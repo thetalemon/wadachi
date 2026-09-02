@@ -106,8 +106,11 @@ export function SignUpForm({
                 {isLoading ? "アカウント作成中..." : "サインアップ"}
               </Button>
             </div>
-            <div className="mt-4 text-center text-sm">既にアカウントをお持ちですか？{" "}
-              <Link href="/auth/login" className="underline underline-offset-4">ログイン</Link>
+            <div className="mt-4 text-center text-sm">
+              既にアカウントをお持ちですか？{" "}
+              <Link href="/auth/login" className="underline underline-offset-4">
+                ログイン
+              </Link>
             </div>
           </form>
         </CardContent>
