@@ -52,61 +52,34 @@ export default function Page() {
 export function FetchDataSteps() {
   return (
     <ol className="flex flex-col gap-6">
-      <TutorialStep title="Create some tables and insert some data">
+      <TutorialStep title="テーブルを作成してデータを挿入する">
         <p>
-          Head over to the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/editor"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
+          Supabase プロジェクトの
+          <a href="https://supabase.com/dashboard/project/_/editor" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
             Table Editor
-          </a>{" "}
-          for your Supabase project to create a table and insert some example
-          data. If you&apos;re stuck for creativity, you can copy and paste the
-          following into the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/sql/new"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
+          </a>
+          でテーブルを作成し、例となるデータを挿入してください。サンプルが必要な場合は、以下を
+          <a href="https://supabase.com/dashboard/project/_/sql/new" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
             SQL Editor
-          </a>{" "}
-          and click RUN!
+          </a>
+          に貼り付けて実行できます。
         </p>
         <CodeBlock code={create} />
       </TutorialStep>
 
-      <TutorialStep title="Enable Row Level Security (RLS)">
+      <TutorialStep title="Row Level Security (RLS) を有効化">
         <p>
-          Supabase enables Row Level Security (RLS) by default. To query data
-          from your <code>notes</code> table, you need to add a policy. You can
-          do this in the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/editor"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
+          Supabase ではデフォルトで Row Level Security (RLS) が有効です。<code>notes</code> テーブルからデータを取得するにはポリシーを追加する必要があります。これは
+          <a href="https://supabase.com/dashboard/project/_/editor" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
             Table Editor
-          </a>{" "}
-          or via the{" "}
-          <a
-            href="https://supabase.com/dashboard/project/_/sql/new"
-            className="font-bold hover:underline text-foreground/80"
-            target="_blank"
-            rel="noreferrer"
-          >
+          </a>
+          か
+          <a href="https://supabase.com/dashboard/project/_/sql/new" className="font-bold hover:underline text-foreground/80" target="_blank" rel="noreferrer">
             SQL Editor
           </a>
-          .
+          で実行できます。
         </p>
-        <p>
-          For example, you can run the following SQL to allow public read
-          access:
-        </p>
+        <p>例として、公開読み取りアクセスを許可する SQL を実行できます:</p>
         <CodeBlock code={rls} />
         <p>
           You can learn more about RLS in the{" "}
@@ -122,31 +95,18 @@ export function FetchDataSteps() {
         </p>
       </TutorialStep>
 
-      <TutorialStep title="Query Supabase data from Next.js">
+      <TutorialStep title="Next.js から Supabase のデータを取得する">
         <p>
-          To create a Supabase client and query data from an Async Server
-          Component, create a new page.tsx file at{" "}
-          <span className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-xs font-medium text-secondary-foreground border">
-            /app/notes/page.tsx
-          </span>{" "}
-          and add the following.
+          非同期のサーバーコンポーネントから Supabase クライアントを作成してデータを取得するには、<code>/app/notes/page.tsx</code> を作成して以下のコードを追加してください。
         </p>
         <CodeBlock code={server} />
         <p>Alternatively, you can use a Client Component.</p>
         <CodeBlock code={client} />
       </TutorialStep>
 
-      <TutorialStep title="Explore the Supabase UI Library">
+      <TutorialStep title="Supabase UI ライブラリを試す">
         <p>
-          Head over to the{" "}
-          <a
-            href="https://supabase.com/ui"
-            className="font-bold hover:underline text-foreground/80"
-          >
-            Supabase UI library
-          </a>{" "}
-          and try installing some blocks. For example, you can install a
-          Realtime Chat block by running:
+          <a href="https://supabase.com/ui" className="font-bold hover:underline text-foreground/80">Supabase UI library</a> を試して、ブロックをインストールしてみましょう。例えば Realtime Chat ブロックは次のコマンドで追加できます。
         </p>
         <CodeBlock
           code={
@@ -155,8 +115,8 @@ export function FetchDataSteps() {
         />
       </TutorialStep>
 
-      <TutorialStep title="Build in a weekend and scale to millions!">
-        <p>You&apos;re ready to launch your product to the world! 🚀</p>
+      <TutorialStep title="週末で作って数百万ユーザーへスケール！">
+        <p>準備ができました。あなたのプロダクトを公開しましょう！ 🚀</p>
       </TutorialStep>
     </ol>
   );
