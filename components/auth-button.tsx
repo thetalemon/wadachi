@@ -1,22 +1,93 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from './ui/button'
-import { createClient } from '@/lib/supabase/server'
 import { LogoutButton } from './logout-button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from './ui/dropdown-menu'
+import { useEffect, useState } from 'react'
+import { createClient as createBrowserClient } from '@/lib/supabase/client'
 
-export async function AuthButton() {
-  const supabase = await createClient()
+export function AuthButton() {
+  const [user, setUser] = useState<any | null>(null)
 
-  // You can also use getUser() which will be slower.
-  const { data } = await supabase.auth.getClaims()
+  useEffect(() => {
+    const supabase = createBrowserClient()
+    let mounted = true
+    supabase.auth.getUser().then(({ data }) => {
+      if (!mounted) return
+      setUser(data?.user ?? null)
+      // fetch profile for avatar
+      if (data?.user) {
+        fetch('/api/profile')
+          .then((r) => r.json())
+          .then((j) => {
+            if (!mounted) return
+            const signed = j?.signedAvatarUrl
+            const avatarPath = j?.data?.avatar_url
+            if (signed) {
+              setAvatar(signed)
+            } else if (avatarPath) {
+              const supabaseBase =
+                process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, '') ?? ''
+              setAvatar(
+                avatarPath.startsWith('/storage/v1/object/')
+                  ? `${supabaseBase}${avatarPath}`
+                  : avatarPath
+              )
+            }
+          })
+          .catch(() => {})
+      }
+    })
+    return () => {
+      mounted = false
+    }
+  }, [])
 
-  const user = data?.claims
+  const [avatar, setAvatar] = useState<string | null>(null)
 
-  return user ? (
-    <div className="flex items-center gap-4">
-      ようこそ、{user.email}さん！
-      <LogoutButton />
-    </div>
-  ) : (
+  if (user) {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            aria-label="ユーザーメニュー"
+            className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium overflow-hidden"
+          >
+            {avatar ? (
+              // prefer user avatar image
+              <img
+                src={avatar}
+                alt="avatar"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+            ) : user.email ? (
+              user.email.charAt(0).toUpperCase()
+            ) : (
+              'U'
+            )}
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem asChild>
+            <Link href="/mypage">マイページ</Link>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <LogoutButton />
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
+  }
+
+  return (
     <div className="flex gap-2">
       <Button asChild size="sm" variant={'outline'}>
         <Link href="/auth/login">サインイン</Link>
