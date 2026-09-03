@@ -136,15 +136,6 @@ export default function ProfileForm({
 
       <label className="block mb-2 text-sm font-medium">アバター画像URL</label>
       <input
-        className="w-full mb-2 rounded border px-3 py-2"
-        value={avatar}
-        onChange={(e) => setAvatar(e.target.value)}
-      />
-
-      <label className="block mb-2 text-sm font-medium">
-        または画像をアップロード
-      </label>
-      <input
         type="file"
         accept="image/*"
         onChange={handleFile}
