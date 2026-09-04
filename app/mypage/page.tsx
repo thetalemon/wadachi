@@ -28,7 +28,7 @@ async function MyPageContent() {
   // tolerate different column names that might exist in the DB
   const displayName = profileData?.display_name
   ;('')
-  const avatarUrl = profileData?.avatar_url ?? profileData?.avatar ?? ''
+  const avatarUrl = profileData?.avatar_url ?? ''
 
   // If the bucket is private, generate a signed URL server-side using the
   // service role key. Set SUPABASE_SERVICE_ROLE_KEY in your environment.

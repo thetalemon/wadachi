@@ -22,9 +22,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { data, error } = await supabase
-      .from('profiles')
-      .upsert(payload, { returning: 'representation' })
+    const { data, error } = await supabase.from('profiles').upsert(payload)
 
     if (error) {
       return NextResponse.json(
@@ -108,7 +106,12 @@ export async function GET(req: Request) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
     const avatarUrl = profileData?.avatar_url ?? null
-    if (supabaseUrl && serviceKey && avatarUrl && avatarUrl.includes('/avatars/')) {
+    if (
+      supabaseUrl &&
+      serviceKey &&
+      avatarUrl &&
+      avatarUrl.includes('/avatars/')
+    ) {
       const idx = avatarUrl.lastIndexOf('/avatars/')
       const sub = avatarUrl.substring(idx + '/avatars/'.length)
       const signUrl = `${supabaseUrl.replace(/\/$/, '')}/storage/v1/object/sign/avatars/${encodeURI(sub)}`
@@ -134,5 +137,9 @@ export async function GET(req: Request) {
     // ignore
   }
 
-  return NextResponse.json({ ok: true, data: profileData ?? null, signedAvatarUrl })
+  return NextResponse.json({
+    ok: true,
+    data: profileData ?? null,
+    signedAvatarUrl
+  })
 }
