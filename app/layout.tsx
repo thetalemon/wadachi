@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import './globals.css'
 import { Suspense } from 'react'
+import Script from 'next/script'
 import Link from 'next/link'
 import { DeployButton } from '@/components/deploy-button'
 import { AuthButton } from '@/components/auth-button'
@@ -32,17 +33,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.__NEXT_PUBLIC_SUPABASE_URL = ${JSON.stringify(
-              process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
-            )}; window.__NEXT_PUBLIC_SUPABASE_KEY = ${JSON.stringify(
-              process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
-                process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-                ''
-            )};`
-          }}
-        />
+        <Script id="supabase-env" strategy="beforeInteractive">
+          {`window.__NEXT_PUBLIC_SUPABASE_URL = ${JSON.stringify(
+            process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
+          )}; window.__NEXT_PUBLIC_SUPABASE_KEY = ${JSON.stringify(
+            process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+              ''
+          )};`}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

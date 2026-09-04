@@ -12,15 +12,15 @@ function readMeta(name: string) {
   }
 }
 
-export function createClient() {
-  const SUPABASE_URL =
+export async function createClient() {
+  let SUPABASE_URL =
     process.env.NEXT_PUBLIC_SUPABASE_URL ??
     (typeof window !== 'undefined'
       ? (window as any).__NEXT_PUBLIC_SUPABASE_URL
       : undefined) ??
     readMeta('supabase-url')
 
-  const SUPABASE_KEY =
+  let SUPABASE_KEY =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
     (typeof window !== 'undefined'
@@ -28,6 +28,19 @@ export function createClient() {
       : undefined) ??
     readMeta('supabase-publishable-key') ??
     readMeta('supabase-anon-key')
+
+  if ((!SUPABASE_URL || !SUPABASE_KEY) && typeof window !== 'undefined') {
+    try {
+      const res = await fetch('/api/supabase-config')
+      if (res.ok) {
+        const json = await res.json()
+        SUPABASE_URL = SUPABASE_URL || json?.url
+        SUPABASE_KEY = SUPABASE_KEY || json?.key
+      }
+    } catch {
+      // ignore
+    }
+  }
 
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     if (typeof window !== 'undefined') {

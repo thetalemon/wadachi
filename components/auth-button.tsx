@@ -17,9 +17,8 @@ export function AuthButton() {
   const [user, setUser] = useState<any | null>(null)
 
   useEffect(() => {
-    const supabase = createBrowserClient()
     let mounted = true
-    supabase.auth.getUser().then(({ data }) => {
+    createBrowserClient().then((supabase) => supabase.auth.getUser()).then(({ data }) => {
       if (!mounted) return
       setUser(data?.user ?? null)
       // fetch profile for avatar

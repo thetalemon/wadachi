@@ -12,7 +12,7 @@ export const LogoutButton = React.forwardRef<
   const router = useRouter()
 
   const logout = async () => {
-    const supabase = createClient()
+    const supabase = await createClient()
     await supabase.auth.signOut()
     router.push('/auth/login')
   }

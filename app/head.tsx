@@ -13,6 +13,17 @@ export default function Head() {
         name="supabase-anon-key"
         content={process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''}
       />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.__NEXT_PUBLIC_SUPABASE_URL = ${JSON.stringify(
+            process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
+          )}; window.__NEXT_PUBLIC_SUPABASE_KEY = ${JSON.stringify(
+            process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+              ''
+          )};`
+        }}
+      />
     </>
   )
 }

@@ -28,7 +28,7 @@ export function LoginForm({
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    const supabase = createClient()
+    const supabase = await createClient()
     setIsLoading(true)
     setError(null)
 
